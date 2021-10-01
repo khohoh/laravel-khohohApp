@@ -67,14 +67,14 @@ class PostController extends Controller
             // Upload Image
             $path = $request->file('cover_image')->storeAs('public/cover_images', $fileNameToStore);
 		
-	    // make thumbnails
-	    $thumbStore = 'thumb.'.$filename.'_'.time().'.'.$extension;
+            // make thumbnails
+            $thumbStore = 'thumb.'.$filename.'_'.time().'.'.$extension;
             $thumb = Image::make($request->file('cover_image')->getRealPath());
-            $thumb->resize(80, 80);
+            $thumb->resize(20, 20);
             $thumb->save('storage/cover_images/'.$thumbStore);
 		
         } else {
-            $fileNameToStore = 'noimage.jpg';
+            $fileNameToStore = '';
         }
 
         //Create Post
@@ -82,7 +82,9 @@ class PostController extends Controller
         $post->title = $request->title;
         $post->body = $request->body;
         $post->user_id = auth()->user()->id;
-        $post->cover_image = $fileNameToStore;
+        if($request->hasFile('cover_image')) {
+            $post->cover_image = $fileNameToStore;
+        }
         $post->save();
 
         return redirect('/posts')->with('success', 'Post created successfully!');
