@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="jumbotron text-center">
+    <div class="jumbotron text-center mt-5">
         <h1>Welcome To khohohApp</h1>
         <p>We wish you all the best!</p>
         <p>

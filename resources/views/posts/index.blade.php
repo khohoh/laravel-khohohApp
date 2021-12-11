@@ -1,7 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>Posts</h1>
+    <div class="d-flex flex-row mb-3">
+        <div>
+            <h1>All Posts</h1>
+        </div>
+        <div>
+            <a href="/posts/create" class="btn btn-outline-primary btn-md ml-4 pt-2">Create Post</a>
+        </div>
+    </div>
+
     @if (Session::has('success'))
         <div class="alert alert-success" role="alert">
             {{ Session::get('success') }}
@@ -19,14 +27,14 @@
             <div class="card card-body bg-light mb-3">
                 <div class="row">
                     @if($post->cover_image)
-                    <div class="col-md-4 col-sm-4">
-                        <a href="/posts/{{ $post->id }}">
-                        <img style="width: 100px" src="/storage/cover_images/{{ $post->cover_image }}">
-                    </a>
-                    </div>
+                        <div class="col-md-1 col-sm-1">
+                            <a href="/posts/{{ $post->id }}">
+                                <img style="width: 60px" src="/storage/cover_images/{{ $post->cover_image }}">
+                            </a>
+                        </div>
                     @endif
 
-                    <div class="col-md-8 col-sm-8">
+                    <div class="col-md-11 col-sm-11">
                         <h3><a href="/posts/{{ $post->id }}">{{ $post->title }}</a></h3>
                         <small>Wrietten on {{ $post->created_at }} by {{ $post->user->name }}</small>  
                     </div>

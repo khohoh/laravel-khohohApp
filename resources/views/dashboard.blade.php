@@ -40,6 +40,8 @@
                                 </tr>
                             @endforeach
                         </table>
+                        
+                        {{ $posts->links() }}
                     @else
                         <h3 class="mt-4">You have no posts</h3>
                     @endif

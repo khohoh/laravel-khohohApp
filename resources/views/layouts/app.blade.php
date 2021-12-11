@@ -24,12 +24,15 @@
         }
     </style>
 </head>
-<body>
+<body style="background-size: cover; height:100vh;">
+{{-- <body style="background-image: url('https://cdn.pixabay.com/photo/2021/08/25/17/22/flowers-6574079_960_720.jpg'); 
+             height: 100vh; background-position: center; background-repeat: no-repeat; background-size: cover;"> --}}
     @include('inc.navbar')
-    <div class="container">
-        @yield('content')
-    </div>
-
+    
+        <div class="container mt-">
+            @yield('content')
+        </div>
+    
     <script src="https://cdn.ckeditor.com/ckeditor5/29.2.0/classic/ckeditor.js"></script>
     @yield('scripts')
 </body>
